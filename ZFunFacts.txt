@@ -1,0 +1,64 @@
+1. Ce este o clasă?
+Analogie: Clasa e ca o rețetă de prăjituri. Nu e prăjitura în sine, ci doar planul pentru a o face.
+Tehnic: O clasă este un șablon care definește atributele (caracteristici) și metodele (acțiuni) pentru obiecte.
+2. Ce este un obiect?
+Analogie: Obiectul e prăjitura făcută după rețetă. Fiecare prăjitură (obiect) poate avea caracteristici diferite, dar urmează aceeași rețetă.
+Tehnic: Obiectul este o instanță a clasei.
+3. Structura unei clase:
+Atribute: Caracteristicile clasei (ex: culoare, mărime).
+Tipuri: Publice, private, protejate.
+Exemplu: string marca; în clasa Masina.
+Metode: Funcții care definesc ce poate face clasa.
+Publice: Accesibile de oriunde.
+Private: Ascunse, folosite doar în interiorul clasei.
+Protejate: Similar cu private, dar accesibile și pentru clasele moștenite.
+cpp
+Copy code
+class Masina {
+private:
+    string marca;  // Atribut privat
+public:
+    void setMarca(string m) {  // Metodă publică
+        marca = m;
+    }
+    void afiseaza() {
+        cout << "Marca: " << marca << endl;
+    }
+};
+4. Constructorul:
+Analogie: Constructorul e un set de setări implicite când deschizi un telefon nou.
+Tehnic: O metodă specială care inițializează atributele unui obiect.
+Exemplu: Masina() { marca = "Dacia"; } setează o valoare implicită.
+5. Destructorul:
+Analogie: Destructorul e ca o echipă de curățenie care strânge tot după ce o petrecere s-a terminat.
+Tehnic: Curăță memoria folosită de obiect când nu mai e nevoie de el.
+6. Singleton:
+Analogie: Un club exclusivist cu un singur membru.
+Tehnic: O clasă care permite crearea unui singur obiect (instanță).
+cpp
+Copy code
+class Club {
+private:
+    static Club* instanta;
+    Club() {}  // Constructor privat
+public:
+    static Club* getInstanta() {
+        if (instanta == nullptr)
+            instanta = new Club();
+        return instanta;
+    }
+};
+7. Pointeri și operatori:
+Operator ->: Accesează atributele/metodele unui obiect printr-un pointer.
+Analogie: E ca un drum care duce spre un anumit punct (obiect).
+Exemplu: ptr->marca = "BMW";
+8. Metoda this:
+Analogie: E ca atunci când îți spui „Eu fac asta”.
+Tehnic: „Arată spre” obiectul curent.
+9. Operatorul de copiere și memory leaks:
+Analogie: Dacă ai doi copii care împart aceeași jucărie, unul poate să o strice, iar celălalt rămâne fără. Faci o copie corectă pentru ca fiecare să aibă propria jucărie.
+Tehnic: Operatorul de copiere (=) trebuie să creeze copii independente pentru a evita scurgeri de memorie.
+10. Diferențe importante:
+Funcție vs. Metodă:
+Funcția e o acțiune generală (toată lumea poate folosi o scară).
+Metoda e legată de un obiect (scară personalizată pentru casa ta).
