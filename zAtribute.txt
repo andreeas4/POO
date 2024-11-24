@@ -54,7 +54,7 @@ public:
 };
 În acest exemplu, atributul marca este protejat și poate fi accesat din clasa derivate MasinaSport.
 
-  Atribute statice:
+  Atribute statice: 
 
 Atributele statice sunt partajate de toate instanțele clasei. Adică, indiferent câte obiecte ale clasei sunt create, toate vor accesa aceeași valoare a atributului static.
 Se definește folosind cuvântul cheie static
@@ -63,7 +63,7 @@ public:
     static int numarMasini;  // Atribut static
 };
 
-// Inițializarea atributului static
+// Inițializarea atributului static GLOBAL
 int Masina::numarMasini = 0;
 
 int main() {
