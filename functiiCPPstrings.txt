@@ -1,0 +1,23 @@
+length() sau size(): Returnează lungimea șirului.
+empty(): Verifică dacă șirul este gol.
+clear(): Șterge conținutul șirului, făcându-l gol.
+at(pos): Returnează caracterul de la poziția specificată.
+Operatorul de indexare [pos]: Returnează caracterul de la poziția specificată, similar cu at, dar fără verificare de limită.
+append(str): Adaugă un șir la finalul șirului curent.
+operator+=: Adaugă un șir la finalul șirului curent (similar cu append).
+insert(pos, str): Inserează un șir într-o anumită poziție.
+erase(pos, len): Șterge caracterele din șir începând de la poziția pos, pe o lungime len.
+replace(pos, len, str): Înlocuiește o porțiune a șirului curent cu alt șir.
+find(str, pos): Caută prima apariție a șirului str începând de la poziția pos.
+rfind(str, pos): Caută ultima apariție a șirului str înainte de poziția pos.
+find_first_of(str, pos): Găsește prima apariție a oricărui caracter din str.
+find_last_of(str, pos): Găsește ultima apariție a oricărui caracter din str.
+find_first_not_of(str, pos): Găsește prima apariție a unui caracter care nu este în str.
+find_last_not_of(str, pos): Găsește ultima apariție a unui caracter care nu este în str.
+substr(pos, len): Returnează un substring începând de la poziția pos, de lungime len.
+compare(str): Compară șirul curent cu str. Returnează 0 dacă sunt egale, o valoare negativă dacă șirul curent este mai mic și o valoare pozitivă dacă șirul curent este mai mare.
+swap(str): Schimbă conținutul șirului curent cu alt șir.
+c_str(): Returnează un pointer la un șir de caractere compatibil cu C (char*).
+resize(n): Redimensionează șirul la dimensiunea n.
+push_back(ch) și pop_back(): push_back(ch) adaugă caracterul ch la finalul șirului, iar pop_back() elimină ultimul caracter din șir.
+to_string(value): Convertește un număr într-un string.
