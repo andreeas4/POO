@@ -1,0 +1,18 @@
+ funcțiile (sau metodele) publice, private și protected sunt tipuri de funcții care au diferite nivele de accesibilitate în cadrul unei clase. Aceasta înseamnă că ele pot fi accesate sau modificate doar într-un anumit context, în funcție de setările de acces.
+
+Pentru a înțelege mai bine diferențele dintre aceste tipuri de funcții, îți voi explica fiecare dintre ele cu ajutorul unei analogii.
+
+Analogia cu o casă:
+Imaginăm că o clasă este o casă, iar funcțiile din acea clasă sunt ca niște comenzi sau acțiuni pe care le poți face în interiorul casei.
+
+Public: Funcțiile publice sunt ca ușile casei.
+Acestea sunt deschise pentru toată lumea, adică oricine, inclusiv vecinii, poate intra și le poate folosi. 
+Într-o casă, orice invitat poate deschide ușa și să facă ce vrea, atâta timp cât are acces la ea.
+
+Private: Funcțiile private sunt ca încăperile ascunse ale casei sau dormitorul unde nu are voie să intre nimeni altcineva, decât tu (proprietarul casei).
+De exemplu, poți avea o cameră secretă în care doar tu poți accesa anumite lucruri.
+Nimeni altcineva nu poate accesa aceste funcții sau să le modifice, decât în interiorul clasei respective.
+
+Protected: Funcțiile protejate sunt ca membrii familiei din casa ta. Ei pot intra în anumite încăperi, dar vizitatorii nu pot face acest lucru. 
+Dacă ai un frate sau o soră, ei pot intra în dormitorul tău pentru că sunt parte din familie (în cadrul aceleași clase), dar altcineva nu poate face acest lucru. 
+Așadar, aceste funcții sunt accesibile doar pentru subclase (moștenitorii) sau pentru alte funcții ale aceleași clase, dar nu pentru obiecte externe.
