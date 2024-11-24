@@ -1,0 +1,51 @@
+Clase și Obiecte
+Clasa: Este un șablon (model) pentru crearea obiectelor. Definește atributele (datele) și metodele (operațiile) unui tip de obiect.
+Obiect: Este o instanță a unei clase, adică un exemplu concret al acelei clase.
+2. Moștenirea
+Permite unei clase să preia atributele și metodele unei alte clase.
+Promovează reutilizarea codului și modelarea relațiilor ierarhice.
+
+3. Incapsularea
+Ascunde detaliile interne ale unei clase, expunând doar ceea ce este necesar printr-o interfață publică.
+Accesori: Public, privat, protejat.
+Scop: Protecția datelor și controlul accesului la ele.
+Analogie: Incapsularea este ca o telecomandă – vezi doar butoanele disponibile, nu și circuitele interne.
+
+4. Polimorfism
+Permite unui obiect să aibă mai multe forme, în funcție de context.
+Polimorfism la compilare: Se referă la supraincarcarea funcțiilor și operatorilor.
+Polimorfism la runtime: Este realizat prin folosirea de metode virtuale și se bazează pe legarea dinamică.
+Analogie: Același cuvânt poate avea sensuri diferite, în funcție de context (de exemplu, "cheie" poate însemna cheia unei uși sau cheia unei mașini).
+
+5. Abstracția
+Reprezintă procesul de a scoate în evidență doar detaliile esențiale ale unui obiect, ascunzându-le pe cele irelevante.
+Se implementează prin clase abstracte sau interfețe.
+Analogie: O mașină este un obiect abstract – te interesează să o conduci, nu să știi cum funcționează motorul în detaliu.
+
+6. Constructori și Destructor
+Constructor: Este o metodă specială care inițializează un obiect atunci când este creat.
+Destructor: Este o metodă specială care eliberează resursele utilizate de un obiect atunci când acesta nu mai este necesar.
+
+7. Supraincarcarea (Overloading)
+Permite utilizarea aceluiași nume pentru mai multe funcții sau operatori, dar cu parametri diferiți.
+Exemplu: Funcția add(int a, int b) și add(double x, double y) pot coexista.
+
+8. Suprascrierea (Overriding)
+Permite unei clase derivate să modifice comportamentul unei metode moștenite de la clasa de bază.
+Exemplu: Dacă clasa de bază are o metodă afiseazaDetalii(), clasa derivată poate redefini metoda pentru a afișa detalii suplimentare.
+
+9. Static și Dinamic Binding
+Static Binding: Alegerea metodei se face la compilare (funcții non-virtuale).
+Dinamic Binding: Alegerea metodei se face la runtime (funcții virtuale).
+
+10. Singleton
+Este un design pattern care asigură că o clasă are o singură instanță pe parcursul execuției aplicației.
+Analogie: Singleton este ca un manager unic al unei echipe – există doar unul.
+
+11. Prietenia (Friend Classes și Friend Functions)
+Permite unei funcții sau clase să acceseze membrii privați ai unei alte clase.
+Analogie: Prietenii pot avea acces la secretele tale, chiar dacă ceilalți nu au voie.
+
+12. Interfețe (Interfaces)
+Sunt clase abstracte pure care definesc un set de metode ce trebuie implementate de clasele derivate.
+Analogie: E ca un contract – dacă îl semnezi (implementezi), trebuie să respecti toate regulile lui.
