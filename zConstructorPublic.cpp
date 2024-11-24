@@ -1,3 +1,8 @@
+/*Un constructor este o funcție specială într-o clasă, folosită pentru a inițializa un obiect atunci când acesta este creat.
+Constructorul este apelat automat atunci când un obiect al clasei este instanțiat și are rolul de a seta valorile implicite pentru atributele obiectului
+sau de a efectua orice alte operațiuni necesare pentru a pregăti obiectul să fie utilizat.*/
+
+
 #include <iostream>
 using namespace std;
 
