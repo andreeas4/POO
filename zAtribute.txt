@@ -1,0 +1,87 @@
+Un constructor este o funcție specială într-o clasă, folosită pentru a inițializa un obiect atunci când acesta este creat. Constructorul este apelat automat atunci când un obiect al clasei este instanțiat și are rolul de a seta valorile implicite pentru atributele obiectului sau de a efectua orice alte operațiuni necesare pentru a pregăti obiectul să fie utilizat.
+  Caracteristici ale atributelor:
+
+Atributele sunt variabile care aparțin unui obiect sau clase.
+Atributele pot stoca date despre obiecte, cum ar fi numele, vârsta sau alte caracteristici.
+Atributele sunt declarate în interiorul unei clase și sunt accesibile prin obiectele acelei clase.
+Tipuri de atribute
+Atributele pot fi de mai multe tipuri, în funcție de vizibilitatea (accesibilitatea) lor și de modul în care sunt gestionate în cadrul clasei. Cele mai comune tipuri sunt:
+
+Atribute publice:
+
+Sunt accesibile din orice parte a programului, adică oricare funcție sau obiect care poate accesa instanța clasei.
+Se definesc folosind specifierul public înainte de variabila din clasă
+class Masina {
+public:
+    string marca;  // Atribut public
+};
+În acest exemplu, marca este un atribut public, iar valoarea lui poate fi accesată direct din funcții externe.
+
+Atribute private:
+
+Sunt accesibile doar în interiorul clasei, adică nu pot fi accesate direct din afara clasei. Acestea sunt protejate de private.
+De obicei, atributele private sunt gestionate prin metode publice (cum ar fi setteri și getteri).
+class Masina {
+private:
+    string marca;  // Atribut privat
+public:
+    // Setter pentru a seta marca
+    void setMarca(string m) {
+        marca = m;
+    }
+
+    // Getter pentru a obține marca
+    string getMarca() {
+        return marca;
+    }
+};
+in acest exemplu, atributul marca este privat, iar valoarea sa poate fi modificată sau citită doar prin metodele setMarca() și getMarca().
+
+Atribute protejate (protected):
+
+Sunt accesibile în interiorul clasei și în clasele derivate (subclase), dar nu din exterior.
+Se definesc folosind specifierul protected.
+  class Masina {
+protected:
+    string marca;  // Atribut protejat
+};
+
+class MasinaSport : public Masina {
+public:
+    void setMarcaSport(string m) {
+        marca = m;  // Accesăm atributul protejat din clasa de bază
+    }
+};
+În acest exemplu, atributul marca este protejat și poate fi accesat din clasa derivate MasinaSport.
+
+  Atribute statice:
+
+Atributele statice sunt partajate de toate instanțele clasei. Adică, indiferent câte obiecte ale clasei sunt create, toate vor accesa aceeași valoare a atributului static.
+Se definește folosind cuvântul cheie static
+class Masina {
+public:
+    static int numarMasini;  // Atribut static
+};
+
+// Inițializarea atributului static
+int Masina::numarMasini = 0;
+
+int main() {
+    Masina m1, m2;
+    Masina::numarMasini = 10;  // Accesăm atributul static
+    cout << "Numar masini: " << Masina::numarMasini << endl;
+    return 0;
+}
+În acest exemplu, numarMasini este un atribut static, iar toate instanțele clasei Masina vor împărți aceeași valoare pentru acest atribut.
+
+
+
+
+ REZUMAT
+  Un atribut este o variabilă care stochează informații despre obiectele unei clase și poate fi de mai multe tipuri, în funcție de accesibilitatea sa și de modul în care este gestionat:
+
+Public: accesibil oricui.
+Private: accesibil doar în cadrul clasei.
+Protected: accesibil în cadrul clasei și al subclaselor.
+Static: partajat de toate instanțele clasei.
+  
