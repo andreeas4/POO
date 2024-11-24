@@ -41,6 +41,6 @@ int main() {
     prajitura1.amestecaIngrediente();  // Metodă publică
     prajitura1.coace();  // Metodă publică
     prajitura1.afiseazaPrajitura();  // Metodă publică
-
+//se pot modifica in main doar variabilele/datele din public
     return 0;
 }
