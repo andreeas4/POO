@@ -25,8 +25,8 @@ public:
 
 void main()
 {
-	persoana vp[] = { persoana(16,32,"Ana"),persoana(24,23,"Maria"),persoana(32,37,"Mihai") };
-	map<int, persoana> mp;
+	persoana vp[] = { persoana(100,32,"Ana"),persoana(500,23,"Maria"),persoana(250,37,"Mihai") };
+	map<int, persoana,greater<int>> mp;
 	for (int i = 0; i < sizeof(vp) / sizeof(persoana); i++)
 	{
 		pair<int, persoana> el(vp[i].get_marca(), vp[i]);
@@ -35,4 +35,9 @@ void main()
 	map<int, persoana> ::iterator mit;
 	for (mit = mp.begin(); mit != mp.end(); mit++)
 		cout << mit->first <<" " << mit->second<<endl;
+
+	mit = mp.find(250);
+	
+
+
 }
