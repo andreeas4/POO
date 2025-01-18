@@ -1,3 +1,4 @@
+//definiti clase care sa permita gestiunea datelor aferente unei motociclete (producator,nr drumuri, dist parcurse) folosind membri de tip public,private ,protected,const, static.Clasa va permite urmatoareele apeluri in main: Motocicleta m1; Motocicleta m2("Suzuki",3,new int[3]{100,150,120});Motocicleta m3=m2; m2.setproducator("Yamaha"); Motocicleta ::tipPermis='B';
 
 #include <iostream>
 #include <string>
@@ -13,8 +14,8 @@ private:
 
 
 protected:
-	
 
+	
 
 public:
 
@@ -29,8 +30,23 @@ public:
 		else distParcursa = nullptr;
 
 	}
+	Motocicleta (Motocicleta &other):nrDrumuri(other.nrDrumuri),producator(other.producator)
+	{
+		if (nrDrumuri != 0)
+		{
+			distParcursa = new int[other.nrDrumuri * sizeof(int)];
+			for (int i = 0; i < other.nrDrumuri; i++)
+				distParcursa[i] = other.distParcursa[i];
+		}
+		else distParcursa = nullptr;
 
-
+	}
+	
+	~Motocicleta() {
+		if (distParcursa != nullptr) {
+			delete[] distParcursa;
+		}
+	}
 	//---------------------metode--------------------------------------
 	void setProducator(string p)
 	{
@@ -53,24 +69,26 @@ public:
 
 	void setDist(int fNrDrumuri, const int* fDistParcurse) {
 		if (fNrDrumuri <= 0 || fDistParcurse == nullptr) {
-			cout << "Date invalide pentru setarea distanțelor." << endl;
+			cout << "Date invalide pentru setarea distantelor." << endl;
 			return;
 		}
 
-		// Eliberăm memoria alocată anterior pentru distParcurse
+		// Eliberam memoria alocata anterior pentru distParcurse
 		if (distParcursa != nullptr) {
 			delete[] distParcursa;
 		}
 
-		// Actualizăm numărul de drumuri
+		// Actualizam num?rul de drumuri
 		nrDrumuri = fNrDrumuri;
 
-		// Alocăm memorie pentru noile distanțe și copiem valorile
+		// Alocam memorie pentru noile distante si copiem valorile
 		distParcursa = new int[nrDrumuri];
 		for (int i = 0; i < nrDrumuri; i++) {
 			distParcursa[i] = fDistParcurse[i];
 		}
 	}
+	
+	
 
 friend ostream& operator <<(ostream& os, Motocicleta& m)
 	{
@@ -82,14 +100,25 @@ friend ostream& operator <<(ostream& os, Motocicleta& m)
 			os << "Distanta parcursa in drumul cu numarul " << i + 1 << " : " << m.distParcursa[i];
 			os << endl;
 		}
-
+		
 		return os;
 	}
-	//opertor de atribuire
+	//operator de atribuire
+Motocicleta operator =(Motocicleta& m)
+{    
+	if (this != &m) {
+	setProducator(m.producator);
+	setNrDrumuri(m.nrDrumuri);
+	setDist(m.nrDrumuri, m.distParcursa);
+	}
 	
+	return *this;
+	}
+
 
 
 };
+
 
 void main()
 {
@@ -97,7 +126,12 @@ void main()
 	cout << m1;
 	Motocicleta m2("Suzuki", 3, new int[3] {100, 150, 120});
 	cout << m2;
+	Motocicleta m3 = m2;
+	cout << m3;
+	
+
 
 
 }
+
 
