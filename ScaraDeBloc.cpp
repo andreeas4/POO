@@ -34,7 +34,7 @@ public:
 				else fnumeLoc[i] = "Anonim";
 
 		}
-		else cout << "Nu exista locatari in acest apartament " << endl;
+		else numeLoc = nullptr;
 	}
 	//constructor 2
 	Apartament(int fnrAp , int fnrlocatari ):nrAp(fnrAp),nrlocatari(fnrlocatari){}
@@ -87,9 +87,16 @@ public:
 	{
 		os << "Apartamentul cu nr "<<a.nrAp<<endl;
 		os << "Nr locatari: " << a.nrlocatari<<endl;
-		os << "Numele locatarilor este :" << endl;
-		for (int i = 0; i < a.nrlocatari; i++)
-			os << a.numeLoc[i] << endl;
+		if (a.nrlocatari)
+		{
+			os << "Numele locatarilor este :" << endl;
+			for (int i = 0; i < a.nrlocatari; i++)
+				os << a.numeLoc[i] << " , ";
+			os << endl;
+
+		}
+		
+		
 		if (a.datorii)
 			os << "Exista datorii de  " << a.sumaDatorata<<endl;
 		else os << "Nu exista datorii " << endl;
@@ -124,14 +131,44 @@ public:
 			for (int i = 0; i < nrApartamente; i++)
 				apartamente[i] = fapartamente[i];
 		}
-		else fapartamente = nullptr;
+		else apartamente = nullptr;
 
 	}
 	ScaraDeBloc(const string& fdenumire)
 		: denumire(fdenumire), nrApartamente(0), nrEtaje(0), apartamente(nullptr) {}
 
+	ScaraDeBloc(ScaraDeBloc &other): denumire(other.denumire), nrApartamente(other.nrApartamente), nrEtaje(other.nrEtaje)
+	{
+		apartamente = new Apartament[nrApartamente];
+		if (other.apartamente)
+		{
+			for (int i = 0; i < nrApartamente; i++)
+				apartamente[i] = other.apartamente[i];
+		}
+		else other.apartamente = nullptr;
+
+	}
+
 	~ScaraDeBloc() { if (apartamente) delete[] apartamente; }
 
+	ScaraDeBloc& operator =(ScaraDeBloc& other) {
+		if (this != &other)
+		{
+			if (apartamente)
+				delete[]apartamente;
+			nrApartamente = other.nrApartamente;
+			nrEtaje = other.nrEtaje;
+			apartamente = new Apartament[other.nrApartamente];
+			if (other.apartamente)
+			{
+				for (int i = 0; i < other.nrApartamente; i++)
+					apartamente[i] = other.apartamente[i];
+			}
+			else apartamente = nullptr;
+			
+		}
+		return *this;
+	}
 	friend ostream& operator<<(ostream& os, ScaraDeBloc& sc) {
 		os << "======================================"<<endl;
 		os  << sc.denumire << endl;;
@@ -157,70 +194,54 @@ public:
 	void setNrEtaje(int nr) { nrEtaje = nr; }
 	void setNrAp(int nr) { nrApartamente = nr; }
 
-	ScaraDeBloc& operator+=(Apartament& ap1) {
-		// Creăm un array nou cu o dimensiune mai mare
-		Apartament* temp = new Apartament[nrApartamente + 1];
+	ScaraDeBloc& operator+=(const Apartament& ap1) {
+		Apartament* copie = new Apartament[nrApartamente];
+		
+		
+			for (int i = 0; i < nrApartamente; i++)
+				copie[i] = apartamente[i];
+			
+		
+			delete[]apartamente;
 
-		// Copiem apartamentele existente în array-ul nou
-		for (int i = 0; i < nrApartamente; i++) {
-			temp[i] = apartamente[i];
-		}
+		apartamente = new Apartament[nrApartamente + 1];
+		for (int i = 0; i < nrApartamente; i++)
+			apartamente[i]=copie[i];
 
-		// Adăugăm noul apartament
-		temp[nrApartamente] = ap1;
-
-		// Eliberăm memoria vechiului array
-		if (apartamente) {
-			delete[] apartamente;
-		}
-
-		// Actualizăm pointerul și numărul de apartamente
-		apartamente = temp;
+		apartamente[nrApartamente] = ap1;
 		nrApartamente++;
+
+		delete[] copie;
 
 		return *this;
 	}
 	
 };
 
-void main()
-{
-
-
-	// Exemplu 2: Crearea unui apartament cu locatari și datorii
+void main() {
+	// Apartament cu locatari și datorii
 	string locatari1[] = { "Ion Popescu", "Maria Ionescu" };
-	Apartament ap2(1, 2, locatari1, true, 450.75f);
-	cout << "Exemplu 2: Apartament cu 2 locatari și datorii" << endl;
+	Apartament ap1(1, 2, locatari1, true, 450.75f);
+	cout << ap1;
+
+	// Apartament fără locatari și fără datorii
+	Apartament ap2(2, 0, nullptr, false, 0.0f);
 	cout << ap2;
 
-	// Exemplu 3: Crearea unui apartament fără datorii și locatari
-	Apartament ap3(2, 0, nullptr, false, 0.0f);
-	cout << "Exemplu 3: Apartament fără datorii și fără locatari" << endl;
-	cout << ap3;
-
-	// Exemplu 7: Utilizarea operatorului << pentru afisare
-	cout << "Exemplu 7: Utilizarea operatorului << pentru afișare" << endl;
-	cout << ap2;
-
-	string locatari7[] = { "Ion Popescu", "Maria Ionescu" };
-	string locatari2[] = { "George Vasilescu", "Ana Vasilescu" };
-
-	// Creăm două apartamente
-	Apartament ap1(1, 2, locatari1, true, 500.5f);
-	Apartament ap10(2, 2, locatari2, false, 0.0f);
-
-	// Array de apartamente
+	// Scara de bloc
 	Apartament apartamente[] = { ap1, ap2 };
-
-	// Creăm o scară de bloc
 	ScaraDeBloc scara("Scara A", 2, 4, apartamente);
 
-	// Afișăm scara de bloc
 	cout << scara;
-	string locatari5[] = { "Ion ", "Maria ","George","Patrocle","Cristina"};
-	Apartament ap5(5, 2, locatari5, true, 450.75f);
-	
-	scara += ap5;
+
+	// Adăugarea unui nou apartament
+	string locatari3[] = { "George Vasilescu", "Ana Vasilescu" };
+	Apartament ap3(3, 2, locatari3, false, 0.0f);
+	scara += ap3;
+	string locatari20[] = { "Maria Antoaneta", "Ghita Don","Marcela Ciolacu"};
+	Apartament ap20(20, 3, locatari3, true, 130.8f);
+	scara += ap20;
 	cout << scara;
 
 }
+
