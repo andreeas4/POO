@@ -60,11 +60,40 @@ public:
 		}
 		return rezultat;
 	}
+	float* getDimensiuni() { return dimensiuni; }
+	friend ostream& operator<<(ostream& os, ServiciiImprimare3D& s)
+	{
+		os << "Codul serviciului: " << s.cod<<endl;
+		os << "Nr exemplare: " << s.nrExemplare << endl;
+		os << "Tipul de materiale:" << s.getTipuriMateriale() << endl;
+		os << "Dimensiuni: ";
+		for (int i = 0; i < s.nrExemplare; i++)
+			os << s.dimensiuni[i] << " ";
+		os << endl;
+		return os;
+
+	}
+	friend bool operator<(ServiciiImprimare3D &s1, ServiciiImprimare3D &s2) {
+		if (s1.nrExemplare < s2.nrExemplare)return true;
+		else return false;
+
+	}
+	ServiciiImprimare3D operator +=(ServiciiImprimare3D s1) {
+		
+			
+	}
+
 };
 void main()
 {
-	ServiciiImprimare3D s1;
-	cout<<s1.getCod();
+	TipMaterial materiale[] = { TipMaterial::LEMN, TipMaterial::PLASTIC };
+	float dim[] = { 5.0f, 10.0f };
 
+	ServiciiImprimare3D serviciu1(1, materiale, 2, dim);
+	cout << "Tipuri de materiale: " << serviciu1.getTipuriMateriale() << endl;
+	ServiciiImprimare3D serviciu2;
+	if (serviciu1 < serviciu2)cout << "Sunt mai putine exemplare oferite de serviciul 1" << endl;
+	else cout<< "Sunt mai putine exemplare oferite de serviciul 2" << endl;
+	cout << serviciu1;
 }
 
